@@ -1,4 +1,4 @@
-# MATLAB Cheatsheets and Exercises
+# MATLAB Numerical Methods
 MATLAB is a popular programming language for numerical computations and has a vast collection of tools for solving mathematical problems. The aim of this repository is to provide implementations of some common numerical methods in MATLAB that can be used as a reference or a starting point for further development.
 
 This repository was created by me as part of Numeric Numbers subject at UNSAM University. Feel free to use these resources for your own learning, or to contribute your own cheatsheets and methods to the repository. </br> </br>
