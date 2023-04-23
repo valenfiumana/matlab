@@ -13,9 +13,7 @@ b = a / 2
 ```
 
 ### Built-in variables
-```Matlab
-pi
-```
+
 ![img](built-in-variables.PNG)
 
 ### Supress and hide the output
@@ -69,6 +67,24 @@ x = [3: 2: 9] % [3 5 7 9] --> [start : increment : end]
 x = linspace(1, 2, 3) % [1.0  1.5  2.0] --> linspace(start, end, number_of_elements)
 ```
 
+Operations with vectors
+```Matlab
+vec = [3, 10, 5]
+
+x = vec + 1         % x = [4, 11, 6]
+w = vec / 2         % w = [6, 20, 10]
+z = vec * 2         % z = [1.5, 5.5, 2.5]
+
+a = [3 4] * [10 20]     % Error * is for matrix multiplication 
+b = [3 4] .* [10 20]    % .* multiplies elements --> b = [30 80]
+
+m = max(vec)            % m = 10
+[max, index] = max(x)   % max = 10, index = 2
+
+n = size(vec) |% [1  3]
+n = numel(vec) % 3
+```
+
 ### Column
 Separate with semi colon
 ```Matlab
@@ -77,12 +93,16 @@ v = [8; 2; -4]
 w = (1:3)' %transpose row vector
 ```
 
-### Matrix
+## Matrix
 ```Matlab
 x = [5 6 7; 8 9 10]
 
-size(x) % 2 3
+a = size(x)           % a = [2 3]
+[n, m] = size(x)      % n = 2,  m = 3
 ```
+
+#### Random generation
+rand()
 ```Matlab
 y = rand(2) %2x2
 y = 
@@ -98,11 +118,24 @@ z =
 rand(size(x)) % creates random matrix with its size
 ```
 
+zeros()
 ```Matlab
 t = zeros(2, 3)
 t =
     0   0   0
     0   0   0
+```
+
+randi()
+
+```Matlab
+X = randi(imax) % returns a random integer between 1 and imax.
+
+x = randi(imax,n) % returns an n-by-n matrix of random integers from interval [1,imax].
+
+X = randi(imax, rows, cols) % randi(10,3,4) returns a 3-by-4 array of integers between 1 and 10.
+
+x = randi(imax,[rows cols]) % randi(10,[3 4]) returns a 3-by-4 array of integers between 1 and 10.
 ```
 
 ### Indexing
@@ -144,6 +177,59 @@ f =
     9     4    2
 ```
 
+## Tables
+![img](table-example.png)
 ```Matlab
-x = zeros(6, 3)
+d = elements.Density
+d =
+    0.5300
+    1.7800
+    0.8500
+    ...
+
+elements.Mass = elements.Density .* elements.Volume1 % adds another column with the results
+
+
+
+
 ```
+
+## Plot
+![img](plot.png)
+
+```Matlab
+plot(x, y)
+plot(x, y, "color line") % example: plot(v1, v2,"r*")
+
+plot(vector) % x varies from 1 to n (vector length) and y is vector values
+
+plot(v, "Linewidth", 3)
+plot(x, y,"ro-","LineWidth",4)
+
+hold on % to graph two functions on the same graph
+hold off % to stop doing that
+legend("Exp A", "Exp B") % If you have 2 graphs, one legend for each one
+
+title("Sample Graph")
+ylabel("Mass (g)")
+xlabel("Time (s)")
+
+xlim([xmin xmax]) % sets the axis limits in the current axes to the specified values
+
+```
+
+Practical example
+
+```Matlab
+yrs = 1991:2013
+
+plot(yrs, res, "b--")
+hold on
+plot(yrs, comm, "k:")
+plot(yrs, ind, "m-.")
+hold off
+
+title("July Electricity Usage")
+legend("res", "comm", "ind")
+```
+![img](plot-example.PNG)
